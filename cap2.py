@@ -50,7 +50,7 @@ class EmployeeBonus:
         return 0
 
 class EmployeeIncome:
-    def __init__(self, employee_income: int, life_insurance: int, child_education_allowance: int, rent_allowance: int, medical_allowance: int, other_allowance: int, spouse_income: int, house_loan_interest: int, house_rent: int, deductions: Deductions, Employee_type):
+    def __init__(self, employee_income: int, life_insurance: int, child_education_allowance: int, rent_allowance: int, medical_allowance: int, other_allowance: int, spouse_income: int, house_loan_interest: int, house_rent: int, deductions: Deductions):
         self.employee_income = employee_income
         self.life_insurance = life_insurance
         self.child_education_allowance = child_education_allowance
@@ -61,7 +61,7 @@ class EmployeeIncome:
         self.house_loan_interest = house_loan_interest
         self.house_rent = house_rent
         self.deductions = deductions
-        self.Employee_type = Employee_type 
+
         
     def calculate_pit(self) -> int:
         taxable_income = self.employee_income + self.spouse_income - self.life_insurance - self.child_education_allowance - self.rent_allowance - self.medical_allowance - self.other_allowance - self.deductions.get_total_deductions()
@@ -92,7 +92,6 @@ other_allowance = int(input("Enter your other allowance: "))
 spouse_income = int(input("Enter your spouse's annual income: "))
 house_loan_interest = int(input("Enter your house loan interest: "))
 house_rent = int(input("Enter your house rent: "))
-Employee_type = str(input("Enter your employee type (regular/contract):"))
 
 # Create objects and calculate PIT
 family = EmployeeFamily(status.lower() == "married", status.lower() == "single", status.lower() == "divorce", children)
